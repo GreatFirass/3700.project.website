@@ -1,0 +1,88 @@
+
+* {
+
+  font-size: 14px;
+  font-weight: 500;
+
+}
+.jumbotron {
+  height: 50vh;
+  background-size: cover;
+  color: white;
+  text-align: center;
+  padding-top: 200px;
+}
+
+.location-card {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.location-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+}
+
+.location-title {
+  margin-top: 10px;
+  font-size: 1.5em;
+}
+
+.location-header {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+
+table.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.location-image {
+  width: 600px;
+  height: auto;
+}
+
+td {
+  padding: 10px;
+}
+
+
+#footer {
+  background-color: #f8f9fa; /* Example color */
+  text-align: center;
+  padding: 15px;
+  font-size: 1rem;
+}
+
+
+
+
+
+.container > h2 {
+  color: #333333; /* Example color */
+  font-weight: bold;
+}
+
+
+a.nav-link:hover {
+  text-decoration: underline;
+}
+
+/* Attribute Selector */
+input[type="button"] {
+  background-color: #007bff; /* Example color */
+  color: white;
+}
+
+.footer::after {
+  content: "Thank you for visiting";
+  display: block;
+  text-align: center;
+  padding: 20px;
+}
