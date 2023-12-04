@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Calculator</title>
+  <!-- Include jQuery -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+
+    .calculator-container {
+      width: 600px;
+      padding: 40px;
+      margin-top: 60px;
+      background-color: rgb(241, 247, 249);
+      border-radius: 20px;
+      text-align: center;
+      margin-bottom: 60px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .inline-label-input {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Header with Navigation Bar -->
+  <header class="header-bg">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <img src="img/logo.png" alt="Skyline Tours Logo" style="height: 60px; width: 90px; padding-right: 20px;">
+        <a class="navbar-brand" href="#">SKYLINE TOURS</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link " href="index.html">Home</a>
+            <a class="nav-link" href="locations.html">Locations</a>
+            <a class="nav-link" href="packages.html">Packages</a>
+            <a class="nav-link " href="about.html">About</a>
+            <a class="nav-link" href="contact.html">Contact</a>
+            <a class="nav-link" href="sginin.html">Sign In</a>
+            <a class="nav-link" href="funpage.html">Fun page</a>
+            <a class="nav-link" href="questionnaire.html">Questionnaire</a>
+            <a class="nav-link active" href="calculator.html">Booking</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="jumbotron jumbotron-fluid" style="background-image: url('img/Calculator-header.jpg');">
+      <div class="container">
+      </div>
+    </div>
+  </header>
+
+  <br>
+  <br>
+  <div class="container">
+    <h2 class="location-header " style="text-align: center;">Booking</h2>
+  </div>
+
+  <div class="container calculator-container">
+
+        <div id="calculator">
+
+            <label for="countries">Select a country:</label>
+            <select id="countries">
+                <option value="paris">Paris</option>
+                <option value="los-angeles">Los Angeles</option>
+                <option value="dubai">Dubai</option>
+                <option value="maldives">Maldives</option>
+                <option value="new-york">New York</option>
+                <option value="phuket">Phuket</option>
+                <option value="milan">Milan</option>
+                <option value="barcelona">Barcelona</option>
+                <option value="london">London</option>
+            </select>
+
+            <br><br>
+
+            <label for="nights">Number of nights:</label>
+            <input type="number" id="nights" min="1" value="1">
+
+            <br><br>
+
+            <label for="studentCheckbox">SQU student discount </label>
+            <input type="checkbox" id="studentCheckbox">
+
+
+            <br><br>
+
+            <div class="inline-label-input">
+                <label for="studentId" id="studentIdLabel" style="display:none;">Enter your ID:</label>
+                <input type="text" id="studentId" style="display:none;">
+            </div>
+
+            <br><br>
+
+            <button onclick="calculateTotal()">Calculate Total</button>
+
+            <br><br>
+
+            <p id="result"></p>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <br>
+    <footer class="bg-light text-center text-lg-start py-3">
+        <div class="container-fluid">
+            <p style="text-align: center;">Call or email us: 2444-5699-9090 or <a
+                    href="mailto:s138634@student.squ.edu.om">Skyline@gmail.com</a></p>
+        </div>
+    </footer>
+
+    <script>
+      // Function to calculate total price
+      function calculateTotal() {
+          var country = document.getElementById('countries').value;
+          var nights = parseInt(document.getElementById('nights').value);
+          var isStudent = document.getElementById('studentCheckbox').checked;
+          var studentId = document.getElementById('studentId').value;
+
+          // Prices for different countries
+          var prices = {
+              'paris': 285.57,
+              'los-angeles': 357,
+              'dubai': 199.83,
+              'maldives': 383.16,
+              'new-york': 416.5,
+              'phuket': 324.75,
+              'milan': 383.3,
+              'barcelona': 357,
+              'london': 366.5
+          };
+
+          // Calculate base price, discount, and total price
+          var basePrice = prices[country] * nights;
+          var discount = isStudent && /^s\d{6}$/.test(studentId) ? 0.15 : 0;
+          var total = basePrice - (basePrice * discount);
+
+          // Display the total price in the result paragraph
+          document.getElementById('result').innerHTML = "Total Price: $" + total.toFixed(2);
+      }
+
+      // Update event listener to toggle student ID label
+      document.getElementById('studentCheckbox').addEventListener('change', function () {
+          var studentIdLabel = document.getElementById('studentIdLabel');
+          var studentIdInput = document.getElementById('studentId');
+
+          // Toggle the display of the student ID label and input based on checkbox state
+          if (this.checked) {
+              studentIdLabel.style.display = 'inline-block';
+              studentIdInput.style.display = 'inline-block';
+          } else {
+              studentIdLabel.style.display = 'none';
+              studentIdInput.style.display = 'none';
+          }
+      });
+  </script>
+
+
+
+</body>
+
+</html>
