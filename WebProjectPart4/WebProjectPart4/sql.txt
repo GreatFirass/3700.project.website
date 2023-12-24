@@ -1,0 +1,106 @@
+CREATE TABLE Users (
+    UserID INT AUTO_INCREMENT PRIMARY KEY,
+    FullName VARCHAR(100),
+    Email VARCHAR(100) UNIQUE NOT NULL,
+    Password VARCHAR(255) NOT NULL,
+    RegistrationDate DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE Questionnaire (
+    ResponseID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(100),
+    PhoneNumber VARCHAR(15),
+    Email VARCHAR(100),
+    Gender ENUM('male', 'female'),
+    TripRating ENUM('perfect', 'good', 'okay'),
+    HotelRating ENUM('excellent', 'good', 'average', 'poor'),
+    OfficeTreatment ENUM('excellent', 'good', 'okay', 'poor'),
+    WebsiteServices ENUM('excellent', 'good', 'okay', 'poor'),
+    Comments TEXT,
+    Subscribe BOOLEAN,
+    SubmissionDate DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE Bookings (
+    BookingID INT AUTO_INCREMENT PRIMARY KEY,
+    UserID INT,
+    Country VARCHAR(50),
+    Nights INT,
+    StudentDiscount BOOLEAN,
+    StudentID VARCHAR(20),
+    TotalPrice DECIMAL(10, 2),
+    BookingDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
+
+CREATE TABLE Contact (
+    ContactID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(100),
+    PhoneNumber VARCHAR(15),
+    Email VARCHAR(100),
+    Feedback TEXT,
+    ContactDate DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+INSERTING: 
+
+
+INSERT INTO Users (FullName, Email, Password) VALUES 
+('John Doe', 'johndoe@example.com', 'password_hash1'),
+('Jane Smith', 'janesmith@example.com', 'password_hash2'),
+('Alice Johnson', 'alicejohnson@example.com', 'password_hash3'),
+('Bob Brown', 'bobbrown@example.com', 'password_hash4'),
+('Carol Davis', 'caroldavis@example.com', 'password_hash5'),
+('David Wilson', 'davidwilson@example.com', 'password_hash6'),
+('Emma Taylor', 'emmataylor@example.com', 'password_hash7');
+
+
+
+INSERT INTO Bookings 
+(UserID, Country, Nights, StudentDiscount, StudentID, TotalPrice) 
+VALUES 
+(1, 'Los Anglos', 5, FALSE, NULL, 1200.00),
+(2, 'Maldive', 3, TRUE, 'STU1001', 800.00),
+(3, 'Dubai', 7, FALSE, NULL, 1500.00),
+(4, 'London', 4, FALSE, NULL, 1000.00),
+(5, 'Puket', 6, TRUE, 'STU1002', 1100.00),
+(6, 'Paris', 5, FALSE, NULL, 1300.00),
+(7, 'Paris', 3, FALSE, NULL, 900.00);
+
+
+
+INSERT INTO Questionnaire 
+(Name, PhoneNumber, Email, Gender, TripRating, HotelRating, OfficeTreatment, WebsiteServices, Comments, Subscribe) 
+VALUES 
+('John Doe', '123-456-7890', 'johndoe@example.com', 'male', 'good', 'excellent', 'good', 'excellent', 'Loved the trip!', TRUE),
+('Jane Smith', '234-567-8901', 'janesmith@example.com', 'female', 'perfect', 'good', 'excellent', 'good', 'Very well organized.', FALSE),
+('Alice Johnson', '345-678-9012', 'alicejohnson@example.com', 'female', 'okay', 'average', 'okay', 'poor', 'It was okay.', TRUE),
+('Bob Brown', '456-789-0123', 'bobbrown@example.com', 'male', 'good', 'excellent', 'good', 'excellent', 'Great experience!', TRUE),
+('Carol Davis', '567-890-1234', 'caroldavis@example.com', 'female', 'perfect', 'good', 'excellent', 'good', 'I had a wonderful time.', FALSE),
+('David Wilson', '678-901-2345', 'davidwilson@example.com', 'male', 'okay', 'average', 'okay', 'poor', 'Could be better.', TRUE),
+('Emma Taylor', '789-012-3456', 'emmataylor@example.com', 'female', 'good', 'excellent', 'good', 'excellent', 'Absolutely fantastic!', TRUE);
+
+
+INSERT INTO Contact (Name, PhoneNumber, Email, Feedback) VALUES 
+('John Doe', '123-456-7890', 'johndoe@example.com', 'Great service and support.'),
+('Jane Smith', '234-567-8901', 'janesmith@example.com', 'Had some issues with my booking, but they were resolved promptly.'),
+('Alice Johnson', '345-678-9012', 'alicejohnson@example.com', 'Very satisfied with the quick response.'),
+('Bob Brown', '456-789-0123', 'bobbrown@example.com', 'I appreciate the helpful customer service.'),
+('Carol Davis', '567-890-1234', 'caroldavis@example.com', 'The website was easy to navigate.'),
+('David Wilson', '678-901-2345', 'davidwilson@example.com', 'Had a great experience, highly recommended.'),
+('Emma Taylor', '789-012-3456', 'emmataylor@example.com', 'Thank you for your prompt assistance.');
+
+
+
+
+
+
+
+

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Skyline Tours</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <!-- Header with Navigation Bar -->
+  <header class="header-bg" style="background-image: url('path-to-your-index-header-image.jpg');">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <img src="img/logo.png" alt="Skyline Tours Logo" style="height: 60px; width: 90px; padding-right: 20px;">
+        <a class="navbar-brand" href="#">SKYLINE TOURS</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link active" href="index.html">Home</a>
+            <a class="nav-link" href="locations.html">Locations</a>
+            <a class="nav-link" href="packages.html">Packages</a>
+            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="contact.html">Contact</a>
+            <a class="nav-link" href="signin.html">Sign In</a>
+            <a class="nav-link" href="funpage.html">Fun page</a>
+            <a class="nav-link" href="questionnaireJQuery.html">Questionnaire</a>
+            <a class="nav-link" href="calculatorJQuery.html">Booking</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="jumbotron jumbotron-fluid" style="background-image: url('img/index-header.png');">
+      <div class="container">
+      </div>
+    </div>
+  </header>
+  <br>
+
+  <!-- Location Cards Section -->
+  <div class="container mt-4">
+    <h2 class="location-header">Home</h2>
+    <div class="row">
+      <!-- Paris -->
+      <div class="col-md-4 location-card">
+        <img src="img/paris-index.jpg" alt="Paris" class="img-fluid"
+          onclick="window.location.href='locations.html#paris'">
+        <div class="location-title">Paris</div>
+      </div>
+      <!-- London -->
+      <div class="col-md-4 location-card">
+        <img src="img/london-index.jpg" alt="London" class="img-fluid"
+          onclick="window.location.href='locations.html#london'">
+        <div class="location-title">London</div>
+      </div>
+      <!-- Los Angeles -->
+      <div class="col-md-4 location-card">
+        <img src="img/LA-index.jpg" alt="Los Angeles" class="img-fluid"
+          onclick="window.location.href='locations.html#LA'">
+        <div class="location-title">Los Angeles</div>
+      </div>
+      <!-- Maldives -->
+      <div class="col-md-4 location-card">
+        <img src="img/maldives-index.jpg" alt="Maldives" class="img-fluid"
+          onclick="window.location.href='locations.html#maldives'">
+        <div class="location-title">Maldives</div>
+      </div>
+      <!-- Dubai -->
+      <div class="col-md-4 location-card">
+        <img src="img/Dubai-index.jpg" alt="Dubai" class="img-fluid"
+          onclick="window.location.href='locations.html#dubai'">
+        <div class="location-title">Dubai</div>
+      </div>
+      <!-- Barcelona -->
+      <div class="col-md-4 location-card">
+        <img src="img/Barcelona-index.jpg" alt="Barcelona" class="img-fluid"
+          onclick="window.location.href='locations.html#barcelona'">
+        <div class="location-title">Barcelona</div>
+      </div>
+      <!-- Milan -->
+      <div class="col-md-4 location-card">
+        <img src="img/milan-index.jpg" alt="Milan" class="img-fluid"
+          onclick="window.location.href='locations.html#milan'">
+        <div class="location-title">Milan</div>
+      </div>
+      <!-- Phuket -->
+      <div class="col-md-4 location-card">
+        <img src="img/phuket-index.jpg" alt="Phuket" class="img-fluid"
+          onclick="window.location.href='locations.html#phuket'">
+        <div class="location-title">Phuket</div>
+      </div>
+      <!-- New York -->
+      <div class="col-md-4 location-card">
+        <img src="img/newyork-index.jpg" alt="New York" class="img-fluid"
+          onclick="window.location.href='locations.html#newyork'">
+        <div class="location-title">New York</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- gallary -->
+
+  <div class="container gallery-container">
+    <div class="container">
+      <h2 class="location-header " style="text-align: center;">photos gallery</h2>
+    </div>
+
+    <div id="photo-gallery">
+      <img class="photo" src="img/gallery-1.jpeg" alt="Photo 1">
+      <img class="photo" src="img/gallery-2.jpg" alt="Photo 2">
+      <img class="photo" src="img/gallery-3.jpg" alt="Photo 3">
+      <img class="photo" src="img/gallery-4.jpg" alt="Photo 4">
+      <img class="photo" src="img/gallery-5.jpg" alt="Photo 5">
+      <img class="photo" src="img/gallery-6.jpg" alt="Photo 6">
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      let currentIndex = 0;
+      const photos = document.querySelectorAll('.photo');
+      const intervalTime = 3000; // 3 seconds
+
+      function showPhoto(index) {
+        photos.forEach((photo, i) => {
+          if (i === index) {
+            photo.style.display = 'block';
+          } else {
+            photo.style.display = 'none';
+          }
+        });
+      }
+
+      function rotatePhotos() {
+        showPhoto(currentIndex);
+        currentIndex = (currentIndex + 1) % photos.length;
+        setTimeout(rotatePhotos, intervalTime);
+      }
+
+      rotatePhotos();
+    });
+  </script>
+
+
+
+
+
+  <!-- text banner -->
+  <br>
+  <div class="container textbanner-container">
+    <div class="text-banner" id="textBanner">
+      Welcome to Skyline Tours website! Today is <span id="currentDate"></span>
+    </div>
+  </div>
+  <br>
+
+  <script>
+    function updateDateTime() {
+      const currentDateElement = document.getElementById('currentDate');
+      const currentTimeElement = document.getElementById('currentTime');
+
+      const now = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
+
+      const currentDate = now.toLocaleDateString('en-US', options);
+      const currentTime = now.toLocaleTimeString('en-US', options);
+
+      currentDateElement.textContent = currentDate;
+      currentTimeElement.textContent = currentTime;
+    }
+
+    // Update date and time every second
+    setInterval(updateDateTime, 1000);
+
+    // Initial update
+    updateDateTime();
+  </script>
+
+
+
+  <!-- Footer -->
+  <footer class="bg-light text-center text-lg-start py-3" id="footer">
+    <div class="container-fluid">
+      <p style="text-align: center;">Call or email us: 2444-5699-9090 or Skyline@gmail.com</p>
+    </div>
+  </footer>
+</body>
+
+</html>
